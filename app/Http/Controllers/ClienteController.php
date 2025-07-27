@@ -13,11 +13,11 @@ class ClienteController extends Controller
     {
         $query = Cliente::query();
 
-        if ($request->pesquisar) {
-            $clientes = Cliente::where('nome', 'like', '%' . $request->pesquisar . '%')->get();
+        if ($request->filled('pesquisar')) {
+            $query->where('nome', 'like', '%' . $request->pesquisar . '%');
         }
 
-        $clientes = $query->orderBy('nome', 'desc')->paginate(10);
+        $clientes = $query->orderBy('data_cadastro', 'desc')->paginate(10);
 
         return view('clientes.index', [
             'clientes' => $clientes
@@ -46,6 +46,9 @@ class ClienteController extends Controller
 
             return redirect()->route('clientes.index')->with('success', 'Novo cliente cadastrado!');
         } catch (Exception $e) {
+            Log::error('Erro ao cadastrar cliente: ' . $e->getMessage(), [
+                'request' => $request->all()
+            ]);
             return back()->withInput()->with('error', 'Ocorreu um erro ao salvar os dados');
         }
     }
@@ -82,6 +85,9 @@ class ClienteController extends Controller
 
             return redirect()->route('clientes.index')->with('success', 'Cliente atualizado!');
         } catch (Exception $e) {
+            Log::error('Erro ao atualizar cliente: ' . $e->getMessage(), [
+                'request' => $request->all(),
+            ]);
             return back()->withInput()->with('error', 'Ocorreu um erro ao atualizar os dados');
         }
     }
