@@ -85,6 +85,12 @@
                                 <span class="fs-5 ms-2 "> Clientes</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('relatorios.*') ? 'active' : '' }}" href="{{ route('relatorios.index') }}">
+                                <i class="fas fa-chart-bar" style="color: #ffffff;"></i> 
+                                <span class="fs-5 ms-2">Relatórios</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

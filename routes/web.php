@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\RelatorioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ClienteController::class, 'index'])->name('clientes.index');
 
 Route::resource('clientes', ClienteController::class);
+Route::get('/relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
