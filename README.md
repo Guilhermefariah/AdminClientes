@@ -1,6 +1,6 @@
-# AdminClientes
+# Administração de Clientes
 
-AdminClientes é um sistema web desenvolvido em Laravel para gerenciamento completo de clientes.
+Administração de Clientes é um sistema web desenvolvido em Laravel para gerenciamento completo de clientes.
 
 ## Funcionalidades
 
